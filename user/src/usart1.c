@@ -68,6 +68,8 @@ void USART_SendString(USART_TypeDef *USARTx, const char *str)
 	{
 		 USART_SendByte(USARTx, (uint8_t)(*str++));
 	}
+	 // 等待最后一个字节传输完成
+   while (USART_GetFlagStatus(USARTx, USART_FLAG_TC) == RESET);
 }
 
 /*********************************

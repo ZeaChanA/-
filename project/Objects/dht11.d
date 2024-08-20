@@ -1,11 +1,8 @@
-.\objects\dht11.o: ..\user\dht11.c
-.\objects\dht11.o: ..\user\dht11.h
+.\objects\dht11.o: ..\user\src\DHT11.c
+.\objects\dht11.o: ..\user\inc\DHT11.h
 .\objects\dht11.o: ..\cmsis\stm32f10x.h
-.\objects\dht11.o: D:\Keil_v5\ARM\PACK\ARM\CMSIS\5.2.0\CMSIS\Include\core_cm3.h
-.\objects\dht11.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
-.\objects\dht11.o: D:\Keil_v5\ARM\PACK\ARM\CMSIS\5.2.0\CMSIS\Include\cmsis_version.h
-.\objects\dht11.o: D:\Keil_v5\ARM\PACK\ARM\CMSIS\5.2.0\CMSIS\Include\cmsis_compiler.h
-.\objects\dht11.o: D:\Keil_v5\ARM\PACK\ARM\CMSIS\5.2.0\CMSIS\Include\cmsis_armcc.h
+.\objects\dht11.o: ..\cmsis\core_cm3.h
+.\objects\dht11.o: D:\develop\MCU\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\dht11.o: ..\cmsis\system_stm32f10x.h
 .\objects\dht11.o: ..\cmsis\stm32f10x_conf.h
 .\objects\dht11.o: ..\STM32F10x_StdPeriph_Driver\inc\stm32f10x_adc.h
@@ -32,5 +29,4 @@
 .\objects\dht11.o: ..\STM32F10x_StdPeriph_Driver\inc\stm32f10x_usart.h
 .\objects\dht11.o: ..\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h
 .\objects\dht11.o: ..\STM32F10x_StdPeriph_Driver\inc\misc.h
-.\objects\dht11.o: ..\user\systick.h
-.\objects\dht11.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\dht11.o: ..\user\inc\SysTick.h

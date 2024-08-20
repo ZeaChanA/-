@@ -1,11 +1,8 @@
 .\objects\usart1.o: ..\user\src\usart1.c
 .\objects\usart1.o: ..\user\inc\usart1.h
 .\objects\usart1.o: ..\cmsis\stm32f10x.h
-.\objects\usart1.o: D:\develop\MCU\Keil_v5\ARM\PACKS\ARM\CMSIS\5.5.1\CMSIS\Core\Include\core_cm3.h
+.\objects\usart1.o: ..\cmsis\core_cm3.h
 .\objects\usart1.o: D:\develop\MCU\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
-.\objects\usart1.o: D:\develop\MCU\Keil_v5\ARM\PACKS\ARM\CMSIS\5.5.1\CMSIS\Core\Include\cmsis_version.h
-.\objects\usart1.o: D:\develop\MCU\Keil_v5\ARM\PACKS\ARM\CMSIS\5.5.1\CMSIS\Core\Include\cmsis_compiler.h
-.\objects\usart1.o: D:\develop\MCU\Keil_v5\ARM\PACKS\ARM\CMSIS\5.5.1\CMSIS\Core\Include\cmsis_armcc.h
 .\objects\usart1.o: ..\cmsis\system_stm32f10x.h
 .\objects\usart1.o: ..\cmsis\stm32f10x_conf.h
 .\objects\usart1.o: ..\STM32F10x_StdPeriph_Driver\inc\stm32f10x_adc.h

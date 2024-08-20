@@ -34,3 +34,4 @@
 .\objects\main.o: ..\user\inc\usart1.h
 .\objects\main.o: D:\develop\MCU\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\main.o: ..\user\inc\SysTick.h
+.\objects\main.o: ..\user\inc\DHT11.h
