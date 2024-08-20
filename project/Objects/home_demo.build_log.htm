@@ -38,10 +38,16 @@ compiling main.c...
   #endif
 ..\user\inc\DHT11.h(18): warning:  #1-D: last line of file ends without a newline
   #endif
-..\user\src\main.c: 5 warnings, 0 errors
+..\user\inc\RGBLED.h(28): warning:  #1-D: last line of file ends without a newline
+  #endif
+..\user\src\main.c(11): warning:  #177-D: variable "temperature"  was declared but never referenced
+  	uint8_t temperature = 0; 
+..\user\src\main.c(12): warning:  #177-D: variable "humidity"  was declared but never referenced
+  	uint8_t humidity = 0; 
+..\user\src\main.c: 8 warnings, 0 errors
 linking...
-Program Size: Code=2700 RO-data=268 RW-data=24 ZI-data=1024  
-".\Objects\home_demo.axf" - 0 Error(s), 5 Warning(s).
+Program Size: Code=2128 RO-data=268 RW-data=20 ZI-data=1028  
+".\Objects\home_demo.axf" - 0 Error(s), 8 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -64,7 +70,7 @@ Package Vendor: Keil
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE:5.2.0
-Build Time Elapsed:  00:00:00
+Build Time Elapsed:  00:00:01
 </pre>
 </body>
 </html>

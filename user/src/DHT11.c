@@ -142,7 +142,7 @@ uint8_t DHT11_ReadByte(void)
 
 /*********************************
 函数名：DHT11_ReadByte
-函数功能： 读取单个字节的DHT11数据
+函数功能： 读取5个字节的DHT11数据
 形参：uint8_t *temperature, uint8_t  *humidity
 返回值：无
 备注：PB3

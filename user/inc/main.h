@@ -7,5 +7,6 @@
 #include "usart1.h"
 #include "SysTick.h"
 #include "DHT11.h"
+#include "RGBLED.h"
 
 #endif

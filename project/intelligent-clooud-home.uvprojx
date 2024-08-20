@@ -542,6 +542,11 @@
               <FileType>1</FileType>
               <FilePath>..\user\src\DHT11.c</FilePath>
             </File>
+            <File>
+              <FileName>RGBLED.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user\src\RGBLED.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
