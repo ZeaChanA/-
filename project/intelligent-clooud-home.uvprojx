@@ -547,6 +547,16 @@
               <FileType>1</FileType>
               <FilePath>..\user\src\RGBLED.c</FilePath>
             </File>
+            <File>
+              <FileName>SSD1306.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user\src\SSD1306.c</FilePath>
+            </File>
+            <File>
+              <FileName>Step_Motor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user\src\Step_Motor.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

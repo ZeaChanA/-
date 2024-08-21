@@ -30,6 +30,8 @@
 ".\objects\systick.o"
 ".\objects\dht11.o"
 ".\objects\rgbled.o"
+".\objects\ssd1306.o"
+".\objects\step_motor.o"
 --library_type=microlib --strict --scatter ".\Objects\home_demo.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

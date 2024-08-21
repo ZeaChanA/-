@@ -1,7 +1,10 @@
 #include "Step_Motor.h"
 
+/**************************************************
+*使用定时器和中断来精确控制步进电机的运动方向和步数
+***************************************************/
 
-/*
+/*********************************
 函数名:Stepmotor_Init
 函数功能：步进电机的初始化
 形参：
@@ -11,7 +14,7 @@ A   PA7
 A_  PA6
 B   PA5
 B_  PA4
-*/
+*********************************/
 void Stepmotor_Init(void)
 {
 	//步进电机引脚控制
@@ -64,98 +67,95 @@ void Stepmotor_Init(void)
 
 
 
-/*
-函数名:Beat_Ch
-函数功能：节拍切换函数
-形参：控制方向的参数 u8 dir
+/*********************************
+函数名:Step_Switch
+函数功能：步进电机步进切换
+形参：控制方向的参数 u8 direction
 返回值：
-备注：
-*/
-void Beat_Ch(u8 dir)
+备注：根据方向切换步进
+*********************************/
+void Step_Switch(u8 direction)
 {
-	static u8 cnt=0;
+	static u8 step_counter=0;
 	
-	cnt++;  
+	step_counter++;  
 	
-	if(dir == TURN)
+	if(direction == FORWARD)
 	{
-		//调用1~4节拍切换
-		switch(cnt)
+		//正向步进
+		switch(step_counter)
 		{
-			case 1:BEAT1;break;
-			case 2:BEAT2;break;
-			case 3:BEAT3;break;
-			case 4:BEAT4;break;
+			case 1: STEP_1; break;//1000
+			case 2: STEP_2; break;//0100
+			case 3: STEP_3; break;//0010
+			case 4: STEP_4; break;//0001
 		}
 	}
 	
-	if(dir == REVERSE)
+	if(direction == BACKWARD)
 	{
-		//调用4~1的节拍切换
-		switch(cnt)
+		//反向步进
+		switch(step_counter)
 		{
-			case 1:BEAT4;break;
-			case 2:BEAT3;break;
-			case 3:BEAT2;break;
-			case 4:BEAT1;break;
+			case 1: STEP_4; break;//0001
+			case 2: STEP_3; break;//0010
+			case 3: STEP_2; break;//0100
+			case 4: STEP_1; break;//1000
 		}
 	}
 	
-	if(cnt==4) cnt=0;
+	if(step_counter==4) step_counter=0;
 }
 
 
-/*
-函数名:Stemp_Stop
+/*********************************
+函数名:Stepmotor_Stop
 函数功能：步进电机停止函数
-形参：void
-返回值：
-备注：
-*/
-void Stemp_Stop(void)
+形参：无
+返回值：无
+备注：停止步进电机动作
+*********************************/
+void Stepmotor_Stop(void)
 {
-	A_L;_A_L;B_L;_B_L;
+	COIL_A_L; COIL_A_INV_L; COIL_B_L; COIL_B_INV_L;//0000
 }
 
 
 
-/*
+/*********************************
 函数名:Stepmotor_Contrl
-函数功能：步进电机控制函数
-形参：控制方向加距离  正负控制方向  大小控制距离
-s32 light
-返回值：
+函数功能：步进电机控制
+形参：控制方向和距离 s32 steps
+返回值：无
 备注：
-如果大于0  向左移动
-如果小于0  向右移动
-如果等于0  不移动
-
-light---以节拍为单位
+		如果steps大于0 向前移动
+    如果steps小于0 向后移动
+    如果steps等于0 停止移动
 
 考虑距离
-*/
-u8 dir=0;
-u32 dis=0;
-void Stepmotor_Contrl(s32 light)//typedef int32_t  s32;
+*********************************/
+u8 motor_direction = 0;
+u32 motor_steps = 0;
+void Stepmotor_Contrl(s32 steps)//typedef int32_t  s32;
 {
-	if(light>0)
+	if(steps > 0)
 	{
-		dir=TURN;
-		dis=light;
+		motor_direction = FORWARD;
+		motor_steps = steps;
 		TIM_Cmd(TIM4,ENABLE);
 	}
 	
-	if(light<0)
+	if(steps < 0)
 	{
-		dir=REVERSE;
-		dis=-light;
-		TIM_Cmd(TIM4,ENABLE);
+		motor_direction = BACKWARD;
+		motor_steps = -steps;
+		TIM_Cmd(TIM4, ENABLE);
 	}
 	
-	if(light == 0)
+	if(steps == 0)
 	{
-		Stemp_Stop();
-		TIM_Cmd(TIM4,DISABLE);
+		Stepmotor_Stop();
+		TIM_Cmd(TIM4, DISABLE);
 	}
 }
 
@@ -170,22 +170,22 @@ void Stepmotor_Contrl(s32 light)//typedef int32_t  s32;
 */
 void TIM4_IRQHandler(void)
 {
-	static u32 n=0;
+	static u32 interrupt_count = 0;
 	//1ms进入一次
-	if(TIM_GetITStatus(TIM4,TIM_IT_Update)==SET)
+	if(TIM_GetITStatus(TIM4,TIM_IT_Update) == SET)
 	{
 		//清除中断挂起位
 		TIM_ClearITPendingBit(TIM4,TIM_IT_Update);
-		n++;    //记录进入了多少次中断
+		interrupt_count++;    //记录进入了多少次中断
 		
-		Beat_Ch(dir);   //节拍切换
+		Step_Switch(motor_direction);   //根据方向执行步进切换
 		
 		//结束条件
-		if(n>=dis)
+		if(interrupt_count >= motor_steps)
 		{
 			//已经执行完毕
-			n=0;
-			Stemp_Stop();
+			interrupt_count = 0;
+			Stepmotor_Stop();
       TIM_Cmd(TIM4,DISABLE);
 		}
 	}

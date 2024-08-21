@@ -6,6 +6,7 @@ int main(void)
 	USART1_Init(9600);
 	RGBLED_Init();
 	DHT11_Init();
+	Stepmotor_Init();
 	
 	//温湿度数据
 	uint8_t temperature = 0; 
@@ -13,6 +14,7 @@ int main(void)
   
 	while(1)
 	{
+		Stepmotor_Contrl(50);
 		/*
 		//消防车警示灯效果
 		FireTruckWarningEffect(100);

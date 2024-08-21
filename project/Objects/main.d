@@ -37,3 +37,7 @@
 .\objects\main.o: ..\user\inc\DHT11.h
 .\objects\main.o: ..\user\inc\RGBLED.h
 .\objects\main.o: D:\develop\MCU\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\main.o: ..\user\inc\SSD1306.h
+.\objects\main.o: D:\develop\MCU\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\main.o: D:\develop\MCU\Keil_v5\ARM\ARMCC\Bin\..\include\inttypes.h
+.\objects\main.o: ..\user\inc\Step_Motor.h
