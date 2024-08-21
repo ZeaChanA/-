@@ -7,13 +7,12 @@ int main(void)
 	RGBLED_Init();
 	DHT11_Init();
 	
-	
+	//温湿度数据
 	uint8_t temperature = 0; 
 	uint8_t humidity = 0; 
   
 	while(1)
 	{
-		NeonLightEffect(1);
 		/*
 		//消防车警示灯效果
 		FireTruckWarningEffect(100);

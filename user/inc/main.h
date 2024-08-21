@@ -8,5 +8,7 @@
 #include "SysTick.h"
 #include "DHT11.h"
 #include "RGBLED.h"
+#include "SSD1306.h"
+#include "Step_Motor.h"
 
 #endif

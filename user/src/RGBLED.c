@@ -22,6 +22,8 @@ void RGBLED_Init(void)
 	GPIO_InitStructure.GPIO_Mode  = GPIO_Mode_Out_PP;
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
 	GPIO_Init(CLK_PORT, &GPIO_InitStructure);
+	
+//	DATA_LOW;
 }
 
 /*********************************
@@ -125,19 +127,19 @@ void NeonLightEffect(uint32_t delayTime)
  uint8_t r, g, b;
 	while (1) 
 	{
-		for (r = 0; r < 255; r++) 
-		{  // 红色渐变
+		for (r = 0; r < 255; r++) // 红色渐变
+		{  
 			RGBLED_Show(r, 0, 255 - r);
 			delay_ms(delayTime);  // 延时
 		}
-		for (g = 0; g < 255; g++) 
-		{  // 绿色渐变
+		for (g = 0; g < 255; g++) // 绿色渐变
+		{  
 			RGBLED_Show(255 - g, g, 0);
 			delay_ms(delayTime);  // 延时
 		}
-		for (b = 0; b < 255; b++) 
-		{  // 蓝色渐变
-			RGBLED_Show(0, 255 - b, b);
+		for (b = 0; b < 255; b++) // 蓝色渐变
+		{  
+			RGBLED_Show(0,255 - b, b);
 			delay_ms(delayTime);  // 延时
 		}
 	}
